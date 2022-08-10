@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block title %}
+Picsified
+{% endblock title %}
+{% block body %}
+<div class="container text-center">
+    <div class="row mt-5 text-start">
+        <div class="row border-bottom border-secondary">
+            <div class="col-md-7 col-sm-6">
+                <h2 class="h6 pt-4 text-start fs-3 fw-semibold d-inline">Upload Pics
+                </h2>
+            </div>
+            <div class="col-md-5 col-sm-6">
+                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">Home</li>
+                        <li class="breadcrumb-item">Create</li>
+                        <li class="breadcrumb-item">Information</li>
+                        <li class="breadcrumb-item">Shipping</li>
+                        <li class="breadcrumb-item">Payment</li>
+                        <li class="breadcrumb-item active" aria-current="page">Upload Pics</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        <form action="{{url_for('uploadpics')}}" method="post" enctype="multipart/form-data">
+            <div class="bg-white rounded-3 py-3 px-5 m-2">
+                <div class="row mt-2 fs-4 fw-semibold d-flex justify-content-center">
+                    Upload Pictures To Reconstruct Your Main Picture
+                </div><br>
+                <div class="row">
+                    <div class="mb-3">
+                        <input class="form-control" type="file" name="files[]" 
+                            accept="image/jpg,image/jpeg,image/JPG,image/JPEG,image/webp,image/WEBP,image/png,.HEIC,image/PNG,image/svg+xml"
+                            multiple>
+                    </div>
+                </div>
+                <div class="row m-3 mb-4 d-flex justify-content-center">pics that is generated should be shown here
+                </div>
+                <div class="row my-2">
+                    <div class="col-6 w-50 pe-3"><a class="btn btn-outline-dark d-block w-100"
+                            href="{{url_for('payment')}}">Back to
+                            Payment</a>
+                    </div>
+                    <div class="col-6 w-50 ps-2"><button class="btn btn-dark d-block w-100" type="submit">Review
+                            Order</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock body %}

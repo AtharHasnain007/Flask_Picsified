@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% block title %}
+Create Yours Now
+{% endblock title %}
+{% block body %}
+<div class="container-xl text-center">
+    <div class="row d-flex justify-content-center align-items-center">
+        <div class="col-xxl-8 col-lg-6 me-xxl-0 me-lg-5 d-flex justify-content-center align-items-center">
+            <!-- <div class="row"><img src="imgs\create1.png"></div>
+            <div class="row"><img src="imgs\create2.png"></div>
+            <div class="row"><img src="imgs\create3.png"></div>
+        </div>
+
+        <div class="col-xl-6 col-lg-7 xl-pt-4 ">
+            <img src="imgs\create1.png"> -->
+            <img id="myImage" src="{{url_for('static', filename='imgs/create3.png')}}" alt="">
+        </div>
+
+        <div class="col-xxl-4 col-lg-5">
+            <div class="bg-white rounded-3 shadow-lg p-4 m-4">
+                <div class="row">
+                    <h3 class="fw-bold text-center">Perspective Poster</h3>
+                </div>
+                <hr>
+                <form action="{{url_for('create')}}" method="post" enctype=multipart/form-data>
+                    <div class="row">
+                        <label class="d-block text-start">Orientation</label>
+                        <div class="col-12">
+                            <div class="form-check form-check-inline" onclick="Orientationvert()">
+                                <input class="form-check-input" type="radio" name="Orientation" value="Vertical">
+                                <label class="form-check-label" for="Orientation">
+                                    <img src="https://doshopify.com/product-personalizer/images/picsifiedww.myshopify.com/POSTER-VERTICAL.png?v=123"
+                                        height="125em">
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline" onclick="Orientationhoriz()">
+                                <input class="form-check-input" type="radio" name="Orientation" value="Horizontal" checked>
+                                <label class="form-check-label" for="Orientation">
+                                    <img src="https://doshopify.com/product-personalizer/images/picsifiedww.myshopify.com/POSTER-HORIZONTAL.png?v=123"
+                                        height="125em">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="d-block text-start">Upload Your Main Image</label>
+                        <div class="col-12">
+                            <div>
+                                <input class="form-control form-control-lg" name="MAIN" type="file"
+                                    accept="image/jpg,image/jpeg,image/JPG,image/JPEG,image/webp,image/WEBP,image/png,.HEIC,image/PNG,image/svg+xml">
+                            </div>
+                        </div>
+                    </div><br>
+                    <div class="row">
+                        <label class="d-block text-start">Size</label>
+                        <div class="col-4">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="size" value="mini">
+                                <label class="form-check-label" for="mini">
+                                    <img src="https://doshopify.com/product-personalizer/images/picsifiedww.myshopify.com/Poster-MINI-3D.jpg?v=123"
+                                        style="height: 5em; width: 3em;">
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="size" value="classic"
+                                    checked>
+                                <label class="form-check-label" for="classic">
+                                    <img src="https://doshopify.com/product-personalizer/images/picsifiedww.myshopify.com/Poster-classic-3D.jpg?v=123"
+                                        style="height: 5em; width: 3em;">
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="size" value="plus"
+                                    checked>
+                                <label class="form-check-label" for="plus">
+                                    <img src="https://doshopify.com/product-personalizer/images/picsifiedww.myshopify.com/Poster-PLUS-3D.jpg?v=123"
+                                        style="height: 5em; width: 3em;">
+                                </label>
+                            </div>
+                        </div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="alert alert-dark text-center" role="alert">
+                                Pics to recreate your poster are uploaded after checkout. To continue tap <strong>"Add
+                                    To
+                                    Cart"</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <button type="submit" class="btn btn-dark btn-shadow btn-lg">Add To Cart</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function Orientationvert() {
+        document.getElementById('myImage').src ="{{url_for('static', filename='imgs/POSTER-VERTICAL.png')}}";
+    }
+    function Orientationhoriz() {
+        document.getElementById('myImage').src ="{{url_for('static', filename='imgs/POSTER-HORIZONTAL.png')}}";
+    }
+</script>
+{% endblock body %}

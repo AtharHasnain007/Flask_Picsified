@@ -1,0 +1,160 @@
+{% extends 'base.html' %}
+{% block title %}
+Picsified
+{% endblock title %}
+{% block body %}
+<div class="container-lg text-center">
+    <div class="row mt-5 text-start">
+        <div class="col-lg-7 col-md-12">
+            <div class="row border-bottom border-secondary">
+                <div class="col-xxl-7">
+                    <h2 class="h6 pt-4 pb-3 mb-3  text-start fs-3 fw-semibold d-inline">Shipping
+                    </h2>
+                </div>
+                <div class="col-xxl-5">
+                    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">Home</li>
+                            <li class="breadcrumb-item">Create</li>
+                            <li class="breadcrumb-item">Info</li>
+                            <li class="breadcrumb-item active" aria-current="page">Shipping</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+            <form action="{{url_for('shipping')}}" method="post">
+                <div class="row mt-3">
+                    <div class="col-10">
+                        <label>Contact</label>
+                        <input type="email" class="form-control" name="email"
+                            placeholder="{{session.email}}" disabled>
+                    </div>
+                    <div class="col-2 mt-4">
+                        <a href="{{url_for('info')}}" style="text-decoration: none;"><button type="button"
+                                class="btn btn-dark d-inline">Change</button></a>
+                    </div>
+                </div>
+                <div class="row my-2">
+                    <div class="col-10">
+                        <label>Shipping Address</label>
+                        <input type="email" class="form-control" name="address"
+                            placeholder="{{session.address1}}" disabled>
+                    </div>
+                    <div class="col-2 mt-4">
+                        <a href="{{url_for('info')}}"  style="text-decoration: none;"><button type="button"
+                                class="btn btn-dark d-inline">Change</button></a>
+                    </div>
+                </div>
+                <hr>
+                <div class="row my-5">
+                    <div class="bg-white rounded-3 py-4 m-2 text-center">
+                        <div class="table-responsive">
+                            <table class="table table-hover fs-sm border-top border-secondary">
+                                <thead>
+                                    <tr>
+                                        <th class="align-middle"></th>
+                                        <th class="align-middle">Shipping method</th>
+                                        <th class="align-middle">Delivery time</th>
+                                        <th class="align-middle">Handling fee</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="form-check mb-4">
+                                                <input class="form-check-input" type="radio" id="courier"
+                                                    name="shipping-method" value="TCS" checked="">
+                                                <label class="form-check-label" for="courier"></label>
+                                            </div>
+                                        </td>
+                                        <td class="align-middle"><span
+                                                class="text-dark fw-medium">Courier</span><br><span
+                                                class="text-muted">All addresses (default zone), United States &amp;
+                                                Canada</span></td>
+                                        <td class="align-middle">2 - 4 days</td>
+                                        <td class="align-middle">$26.50</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="form-check mb-4">
+                                                <input class="form-check-input" type="radio" id="local"
+                                                    name="shipping-method" value="ABC">
+                                                <label class="form-check-label" for="local"></label>
+                                            </div>
+                                        </td>
+                                        <td class="align-middle"><span class="text-dark fw-medium">Local
+                                                Shipping</span><br><span class="text-muted">All addresses (default
+                                                zone),
+                                                United States &amp; Canada</span></td>
+                                        <td class="align-middle">up to one week</td>
+                                        <td class="align-middle">$10.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="form-check mb-4">
+                                                <input class="form-check-input" type="radio" id="flat"
+                                                    name="shipping-method" value="XYZ">
+                                                <label class="form-check-label" for="flat"></label>
+                                            </div>
+                                        </td>
+                                        <td class="align-middle"><span class="text-dark fw-medium">Flat
+                                                Rate</span><br><span class="text-muted">All addresses (default
+                                                zone)</span></td>
+                                        <td class="align-middle">5 - 7 days</td>
+                                        <td class="align-middle">$33.85</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row my-2 ms-1 d-flex justify-content-center">
+                        <div class="col-6 w-50 pe-2"><a class="btn btn-outline-dark d-block w-100" href="{{url_for('info')}}">Back
+                                to
+                                Information</a>
+                        </div>
+                        <div class="col-6 w-50 ps-2"><button class="btn btn-dark d-block w-100" type="submit">Proceed
+                                to
+                                Payment</button></div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-lg-5 col-md-12">
+            <div class="bg-white rounded-3 shadow-lg p-4 my-4 ms-lg-5 mx-md-2 text-center">
+                <h2 class="h6 mb-3 pb-1 fw-semibold fs-3">Order Summary</h2>
+                <hr>
+                <div class="row">
+                    <div class="col-9"><img src="imgs\create3.png" style="height: 10em;"></div>
+                    <div class="col-3 d-flex align-items-center">$65.00</div>
+                </div>
+                <div class="row d-flex justify-content-center">cart items will be here</div>
+                <hr>
+                <div class="row mt-4">
+                    <li class="d-flex justify-content-between align-items-center"><span
+                            class="me-2">Shipping:</span><span class="text-end">$26.<small>50</small></span></li>
+                </div>
+                <div class="row my-1">
+                    <li class="d-flex justify-content-between align-items-center"><span class="me-2">Taxes:</span><span
+                            class="text-end">$9.<small>50</small></span></li>
+                </div>
+                <hr>
+                <div class="row my-4">
+                    <div class="col-9">
+                        <input class="form-control" type="text" id="checkout-reduction-code"
+                            placeholder="Gift Card or Promo Code">
+                    </div>
+                    <div class="col-3"><button type="button" class="btn btn-dark">Apply</button>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <span>
+                        <h2 class="h6 mb-3 mx-3 pb-1 fw-semibold fs-3 d-inline">Total:</h2>
+                        <h3 class="fw-normal d-inline">$93.<small>00</small></h3>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body %}

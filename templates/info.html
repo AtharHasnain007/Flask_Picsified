@@ -1,0 +1,139 @@
+{% extends 'base.html' %}
+{% block title %}
+  Information
+{% endblock title %}
+{% block body %}
+  <div class="container-lg text-center">
+    <div class="row mt-5 text-start">
+      <div class="col-lg-7 col-md-12">
+        <div class="row border-bottom border-secondary">
+          <div class="col-md-8 col-sm-6">
+            <h2 class="h6 pt-4 pb-3 mb-3  text-start fs-3 fw-semibold d-inline">Information
+            </h2>
+          </div>
+          <div class="col-md-4 col-sm-6">
+            <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">Home</li>
+                <li class="breadcrumb-item">Create</li>
+                <li class="breadcrumb-item active" aria-current="page">Information</li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+        <div class="bg-white rounded-3 py-3 px-5 m-2">
+          <form action="{{url_for('info')}}" method="post">
+          <div class="row mt-2">
+            <label class="mb-2">Name</label>
+            <div class="col-sm-6">
+              <div class="mb-3">
+                <input class="form-control" type="text" name="firstname" placeholder="First Name">
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="mb-3">
+                <input class="form-control" type="text" name="lastname" placeholder="Last Name">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <label class="mb-2">Contact</label>
+            <div class="col-sm-6">
+              <div class="mb-3">
+                <input class="form-control" type="email" name="email" placeholder="Email">
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="mb-3">
+                <input class="form-control" type="text" name="phoneno" placeholder="Phone Number">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="mb-3">
+                <label class="form-label" for="country">Country</label>
+                <select class="form-select" name="country">
+                  <option>Choose country</option>
+                  <option>Australia</option>
+                  <option>Canada</option>
+                  <option>France</option>
+                  <option>Germany</option>
+                  <option>Switzerland</option>
+                  <option>USA</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="mb-3">
+                <label class="form-label" for="city">City</label>
+                <select class="form-select" name="city">
+                  <option>Choose city</option>
+                  <option>Amsterdam</option>
+                  <option>Berlin</option>
+                  <option>Geneve</option>
+                  <option>New York</option>
+                  <option>Paris</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="mb-3">
+              <label class="form-label" for="address-1">Address</label>
+              <input class="form-control" type="text" name="address-1"
+                placeholder="House no, Street no, Area/District...">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="mb-3">
+                <label class="mb-2">Details</label>
+                <input class="form-control" type="text" name="address-2"
+                  placeholder="Apartment, Suite, etc... (Optional)">
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="mb-3">
+                <label class="form-label" for="zip">ZIP Code</label>
+                <input class="form-control" type="text" name="zip">
+              </div>
+            </div>
+          </div>
+          <h6 class="border-bottom">Billing address</h6>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" checked="" name="same-address">
+            <label class="form-check-label" for="same-address">Same as shipping address</label>
+          </div><br>
+          <div class="row my-2">
+            <div class="col-6 w-50 pe-3"><a class="btn btn-outline-dark d-block w-100" href="{{url_for('create')}}">Back to
+                Create</a>
+            </div>
+            <div class="col-6 w-50 ps-2"><button class="btn btn-dark d-block w-100" type="submit">Proceed to
+                Shipping</button></div>
+          </div>
+          </form>
+        </div>
+      </div>
+      <div class="col-lg-5 col-md-12">
+        <div class="bg-white rounded-3 shadow-lg p-4 m-4 text-center">
+          <h2 class="h6 mb-3 pb-1 fw-semibold fs-3">Subtotal</h2>
+          <h3 class="fw-normal">$65.<small>00</small></h3>
+          <hr>
+          <div class="row">
+            <div class="col-9"><img src="imgs\create3.png" style="height: 10em;"></div>
+            <div class="col-3 d-flex align-items-center">$65.00</div>
+          </div><hr>
+          <div class="row my-2">
+            <div class="col-9">
+              <input class="form-control" type="text" id="checkout-reduction-code"
+                placeholder="Gift Card or Promo Code">
+            </div>
+            <div class="col-3"><button type="button" class="btn btn-outline-dark">Apply</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+ {% endblock body %}
