@@ -5,19 +5,26 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}
-        
-    {% endblock title %}</title>
+
+        {% endblock title %}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 
-<body style="background-color:#e8dada;">
+<!-- blue dark:#C6DCE4 blue light: #DAEAF1 -->
+<!-- pink darl: F2D1D1 pink light:FFE6E6 -->
+<!-- white dark: #EAE3D2 white light:F9F5EB-->
+
+<body style="background-color:#DAEAF1;">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
         crossorigin="anonymous"></script>
-    <nav class="navbar navbar-expand-sm sticky-top" style="background-color: #d8c3c3;">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <nav class="navbar navbar-expand-sm sticky-top" style="background-color: #C6DCE4;">
         <div class="container-fluid">
-            <a class="navbar-brand" href="index.html"><img src="{{url_for('static', filename='imgs/logo.webp')}}"></a>
+            <a class="navbar-brand" href="{{url_for('index')}}"><img
+                    src="{{url_for('static', filename='imgs/logo.webp')}}"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -26,10 +33,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 fs-5">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                        <a class="nav-link active" aria-current="page" href="{{url_for('index')}}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="Giftcard.html">Gift Card</a>
+                        <a class="nav-link" href="{{url_for('giftcard')}}">Gift Card</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -38,7 +45,7 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="#">FAQs</a></li>
-                            <li><a class="dropdown-item" href="create.html">Upload Pics</a></li>
+                            <li><a class="dropdown-item" href="{{url_for('create')}}">Upload Pics</a></li>
                             <li><a class="dropdown-item" href="#contact">Contact Us</a></li>
                         </ul>
                     </li>
@@ -49,7 +56,7 @@
     {% block body %}
 
     {% endblock body %}
-    <footer class="py-5 mt-5" style="background-color:#d8c3c3 ;">
+    <footer class="py-5 mt-5" style="background-color: #C6DCE4;">
         <div class="row mx-5">
             <div class="col-6 col-md-2 mb-3">
                 <h5>Section</h5>
@@ -114,6 +121,9 @@
             </ul>
         </div>
     </footer>
+    <script>
+        AOS.init();
+    </script>
 </body>
 
 </html>

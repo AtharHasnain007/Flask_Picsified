@@ -35,7 +35,7 @@ class Information(db.Model):
     ShippingMethod = db.Column(db.String(15), nullable=True)
 
     def __repr__(self) -> str:
-        return f"{self.name} - {self.order}"
+        return f"{self.orderno}"
 
 @app.route("/index")
 @app.route("/", methods=["GET","POST"])
@@ -47,10 +47,6 @@ def create():
     if request.method=="POST":
         session['orientation'] = request.form['Orientation']
         session['size'] = request.form['size']
-        file = request.files['MAIN']
-        if file and allowed_file(file.filename):
-           filename = secure_filename(file.filename)
-           file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         return redirect(url_for("info")) 
     return render_template("create.html")
 
@@ -67,7 +63,7 @@ def info():
         session['address2'] = request.form['address-2']
         session['ZIP'] = request.form['zip']
         return redirect(url_for("shipping")) 
-    return render_template("info.html")
+    return render_template("info.html",session=session)
 
 @app.route("/shipping", methods=["GET", "POST"])
 def shipping():
@@ -82,6 +78,7 @@ def payment():
         info = Information(firstname=session['firstname'],lastname=session['lastname'],phoneNumber=session['phoneNumber'],email=session['email'],country=session['country'],city=session['city'],address1=session['address1'],address2=session['address2'],ZIP=session['ZIP'],orientation=session['orientation'],size=session['size'],ShippingMethod=session['shippingmethod'])
         db.session.add(info)
         db.session.commit()
+        session['orderno'] = info.orderno
         return redirect(url_for("uploadpics")) 
     return render_template("payment.html")
 
@@ -89,13 +86,29 @@ def payment():
 def uploadpics():
    
     if request.method=="POST":
+        os.mkdir(os.path.join(app.config['UPLOAD_FOLDER'], str(session['orderno'])))
+        path = os.path.join(app.config['UPLOAD_FOLDER'], str(session['orderno']))
+        print(path)
+        file = request.files['MAIN']
+        if file and allowed_file(file.filename):
+           filename = secure_filename(file.filename)
+           file.save(os.path.join(app.config['UPLOAD_FOLDER'], str(session['orderno']), filename))
+           name="MAIN.jpg"
+           os.rename(os.path.join(path,filename),os.path.join(path,name))
         files = request.files.getlist('files[]')
         file_names=[]
         for file in files:
             if file and allowed_file(file.filename):
                 filename = secure_filename(file.filename)
                 file_names.append(filename)
-                file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+                file.save(os.path.join(app.config['UPLOAD_FOLDER'], str(session['orderno']), filename))
+
+        
+        for i, filename in enumerate(os.listdir(path)):
+            if filename != "MAIN.jpg":
+                name = str(i) + ".jpg"
+                os.rename(os.path.join(path,filename),os.path.join(path,name)) 
+               
         return redirect(url_for("revieworder")) 
 
     return render_template("uploadpics.html")
@@ -108,6 +121,14 @@ def revieworder():
 def completeorder():
     return render_template("completeorder.html")
 
+@app.route("/test")
+def test():
+    os.mkdir(os.path.join(app.config['UPLOAD_FOLDER'], str(session['orderno'])))
+    return redirect("\create")
+
+@app.route("/giftcard")
+def giftcard():
+    return render_template("Giftcard.html")
 
 if __name__ == "__main__":
     app.run(debug=True)

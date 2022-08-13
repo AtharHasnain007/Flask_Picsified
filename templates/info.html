@@ -27,12 +27,12 @@
             <label class="mb-2">Name</label>
             <div class="col-sm-6">
               <div class="mb-3">
-                <input class="form-control" type="text" name="firstname" placeholder="First Name">
+                <input class="form-control" type="text" name="firstname" placeholder="First Name" value="{{session.firstname}}">
               </div>
             </div>
             <div class="col-sm-6">
               <div class="mb-3">
-                <input class="form-control" type="text" name="lastname" placeholder="Last Name">
+                <input class="form-control" type="text" name="lastname" placeholder="Last Name" value="{{session.lastname}}">
               </div>
             </div>
           </div>
@@ -40,12 +40,12 @@
             <label class="mb-2">Contact</label>
             <div class="col-sm-6">
               <div class="mb-3">
-                <input class="form-control" type="email" name="email" placeholder="Email">
+                <input class="form-control" type="email" name="email" placeholder="Email" value="{{session.email}}">
               </div>
             </div>
             <div class="col-sm-6">
               <div class="mb-3">
-                <input class="form-control" type="text" name="phoneno" placeholder="Phone Number">
+                <input class="form-control" type="text" name="phoneno" placeholder="Phone Number" value="{{session.phoneNumber}}">
               </div>
             </div>
           </div>
@@ -53,7 +53,7 @@
             <div class="col-sm-6">
               <div class="mb-3">
                 <label class="form-label" for="country">Country</label>
-                <select class="form-select" name="country">
+                <select class="form-select" name="country" value="{{session.country}}">
                   <option>Choose country</option>
                   <option>Australia</option>
                   <option>Canada</option>
@@ -67,7 +67,7 @@
             <div class="col-sm-6">
               <div class="mb-3">
                 <label class="form-label" for="city">City</label>
-                <select class="form-select" name="city">
+                <select class="form-select" name="city" value="{{session.city}}">
                   <option>Choose city</option>
                   <option>Amsterdam</option>
                   <option>Berlin</option>
@@ -82,7 +82,7 @@
             <div class="mb-3">
               <label class="form-label" for="address-1">Address</label>
               <input class="form-control" type="text" name="address-1"
-                placeholder="House no, Street no, Area/District...">
+                placeholder="House no, Street no, Area/District..." value="{{session.address1}}">
             </div>
           </div>
           <div class="row">
@@ -90,13 +90,13 @@
               <div class="mb-3">
                 <label class="mb-2">Details</label>
                 <input class="form-control" type="text" name="address-2"
-                  placeholder="Apartment, Suite, etc... (Optional)">
+                  placeholder="Apartment, Suite, etc... (Optional)" value="{{session.address2}}">
               </div>
             </div>
             <div class="col-sm-6">
               <div class="mb-3">
                 <label class="form-label" for="zip">ZIP Code</label>
-                <input class="form-control" type="text" name="zip">
+                <input class="form-control" type="text" name="zip" value="{{session.ZIP}}">
               </div>
             </div>
           </div>
@@ -121,7 +121,7 @@
           <h3 class="fw-normal">$65.<small>00</small></h3>
           <hr>
           <div class="row">
-            <div class="col-9"><img src="imgs\create3.png" style="height: 10em;"></div>
+            <div class="col-9"><img src="{{url_for('static', filename='imgs/create3.png')}}" style="height: 10em;"></div>
             <div class="col-3 d-flex align-items-center">$65.00</div>
           </div><hr>
           <div class="row my-2">
