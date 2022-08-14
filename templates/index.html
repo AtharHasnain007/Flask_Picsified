@@ -2,6 +2,80 @@
 {% block title %}
 Picsified
 {% endblock title %}
+{% block style %}
+<style>
+  @media (max-width:550px){
+    #rightpic {
+      width: 15em;
+    }
+
+    #leftpic {
+      width: 15em;
+      height: 18em;
+    }
+  }
+  @media (max-width:657px)  and (min-width:550px){
+    #rightpic {
+      width: 19em;
+    }
+
+    #leftpic {
+      width: 19em;
+      height: 25em;
+    }
+  }
+  @media (max-width:768px) and (min-width:657px){
+    #rightpic {
+      width: 22em;
+    }
+
+    #leftpic {
+      width: 23em;
+      height: 30em;
+    }
+  }
+  @media (max-width:850px) and (min-width:768px){
+    #rightpic {
+      width: 22em;
+    }
+
+    #leftpic {
+      width: 19em;
+      height: 30em;
+    }
+  }
+  @media (max-width:991px) and (min-width:850px) {
+    #rightpic {
+      width: 22em;
+    }
+
+    #leftpic {
+      width: 23em;
+      height: 30em;
+    }
+  }
+
+  @media (min-width:991px) {
+    #rightpic {
+      width: 30em;
+    }
+  }
+
+  @media (max-width:1132px) and (min-width:991px) {
+    #leftpic {
+      width: 28em;
+      height: 35em;
+    }
+  }
+
+  @media (min-width:1132px) {
+    #leftpic {
+      width: 33em;
+      height: 37em;
+    }
+  }
+</style>
+{% endblock style %}
 {% block body %}
 <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
   <div class="carousel-indicators">
@@ -87,7 +161,7 @@ Picsified
   <h3 class="p-3 mb-2 bg-dark text-white text-center rounded" style="margin-block-start: 2em;">Reviews</h3>
   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
     <div class="col">
-      <div class="card shadow-sm" data-aos="fade-right" data-aos-duration="500">
+      <div class="card shadow-sm" data-aos="flip-up" data-aos-duration="800">
         <img class="bd-placeholder-img card-img-top" width="100%" height="225"
           src="{{url_for('static', filename='imgs/rev1.jpg')}}">
         <div class="card-body">
@@ -104,7 +178,7 @@ Picsified
       </div>
     </div>
     <div class="col">
-      <div class="card shadow-sm" data-aos="flip-up" data-aos-duration="500">
+      <div class="card shadow-sm" data-aos="flip-up" data-aos-duration="800">
         <img class="bd-placeholder-img card-img-top" width="100%" height="225"
           src="{{url_for('static', filename='imgs/rev2.webp')}}">
         <div class="card-body">
@@ -121,7 +195,7 @@ Picsified
       </div>
     </div>
     <div class="col">
-      <div class="card shadow-sm" data-aos="fade-left" data-aos-duration="500">
+      <div class="card shadow-sm" data-aos="flip-up" data-aos-duration="800">
         <img class="bd-placeholder-img card-img-top" width="100%" height="225"
           src="{{url_for('static', filename='imgs/rev3.jpg')}}">
         <div class="card-body">
@@ -138,7 +212,7 @@ Picsified
       </div>
     </div>
     <div class="col">
-      <div class="card shadow-sm" data-aos="fade-up-right" data-aos-duration="500">
+      <div class="card shadow-sm" data-aos="flip-up" data-aos-duration="800">
         <img class="bd-placeholder-img card-img-top" width="100%" height="225"
           src="{{url_for('static', filename='imgs/rev4.jpg')}}">
         <div class="card-body">
@@ -155,7 +229,7 @@ Picsified
       </div>
     </div>
     <div class="col">
-      <div class="card shadow-sm" data-aos="flip-up" data-aos-duration="500">
+      <div class="card shadow-sm" data-aos="flip-up" data-aos-duration="800">
         <img class="bd-placeholder-img card-img-top" width="100%" height="225"
           src="{{url_for('static', filename='imgs/rev5.jpg')}}">
         <div class="card-body">
@@ -172,7 +246,7 @@ Picsified
       </div>
     </div>
     <div class="col">
-      <div class="card shadow-sm" data-aos="fade-up-left" data-aos-duration="500">
+      <div class="card shadow-sm" data-aos="flip-up" data-aos-duration="800">
         <img class="bd-placeholder-img card-img-top" width="100%" height="225"
           src="{{url_for('static', filename='imgs/rev6.webp')}}">
         <div class="card-body">
@@ -193,16 +267,18 @@ Picsified
 <hr>
 <div class="container-xl p-5 mt-5">
   <div class="row">
-    <div class="col-lg-6 d-flex">
-      <img src="{{url_for('static', filename='imgs/rev3.jpg')}}" style="height: 37em; width: 30em;border-radius: 10px" data-aos="fade-right" data-aos-duration="2500">
-      <img class="align-self-end w-75" src="{{url_for('static', filename='imgs/main2.jpg')}}"
-        style="border-radius: 10px; margin-left: -8em;" data-aos="fade-left" data-aos-duration="2500">
+    <div class="col-md-6 d-flex">
+      <img id="leftpic" src="{{url_for('static', filename='imgs/rev3.jpg')}}" style="border-radius: 10px"
+        data-aos="fade-right" data-aos-duration="2500">
+      <img class="align-self-end" id="rightpic" src="{{url_for('static', filename='imgs/main2.jpg')}}"
+        style="border-radius: 10px;margin-left: -5em;" data-aos="fade-left" data-aos-duration="2500">
     </div>
-    <div class="col-lg-6 text-center">
-      <h3 class="mt-5 pt-5">"The Pics Made Out Of Pics"</h3>
+    <div class="col-md-6 text-center">
+      <h3 class="mt-lg-5 pt-5">"The Pics Made Out Of Pics"</h3>
       A combination of award winning designers and advanced machine learning algorithms used to reconstruct your
       favourite moment using hundreds of pictures.<br>
-     <i>All into one specular gift</i></div>
+      <i>All into one specular gift</i>
+    </div>
   </div>
 </div>
 {% endblock body %}
