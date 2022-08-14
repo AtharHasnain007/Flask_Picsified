@@ -4,7 +4,38 @@ Picsified
 {% endblock title %}
 {% block style %}
 <style>
-  @media (max-width:550px){
+  @media (max-width:355px){
+    #rightpic {
+      width: 14em;
+      height: 6em;
+    }
+
+    #leftpic {
+      width: 11em;
+      height: 15em;
+    }
+  }
+  @media (max-width:425px) and (min-width:355px){
+    #rightpic {
+      width: 13em;
+    }
+
+    #leftpic {
+      width: 11em;
+      height: 17em;
+    }
+  }
+  @media (max-width:460px) and (min-width:425px){
+    #rightpic {
+      width: 14em;
+    }
+
+    #leftpic {
+      width: 14em;
+      height: 18em;
+    }
+  }
+  @media (max-width:550px) and (min-width:460px){
     #rightpic {
       width: 15em;
     }
@@ -14,7 +45,7 @@ Picsified
       height: 18em;
     }
   }
-  @media (max-width:657px)  and (min-width:550px){
+  @media (max-width:657px) and (min-width:550px){
     #rightpic {
       width: 19em;
     }
@@ -157,6 +188,22 @@ Picsified
   </button>
 </div>
 <hr>
+<div class="container-xl p-5 mt-md-5">
+  <div class="row">
+    <div class="col-md-6 d-flex">
+      <img id="leftpic" src="{{url_for('static', filename='imgs/rev3.jpg')}}" style="border-radius: 10px"
+      data-aos="fade-right" data-aos-duration="2500">
+      <img class="align-self-end" id="rightpic" src="{{url_for('static', filename='imgs/main2.jpg')}}"
+      style="border-radius: 10px;margin-left: -5em;" data-aos="fade-left" data-aos-duration="2500">
+    </div>
+    <div class="col-md-6 text-center">
+      <h3 class="mt-lg-5 pt-5">"The Pics Made Out Of Pics"</h3>
+      A combination of award winning designers and advanced machine learning algorithms used to reconstruct your
+      favourite moment using hundreds of pictures.<br>
+      <i>All into one specular gift</i>
+    </div>
+  </div>
+</div><hr>
 <div class="container">
   <h3 class="p-3 mb-2 bg-dark text-white text-center rounded" style="margin-block-start: 2em;">Reviews</h3>
   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
@@ -261,23 +308,6 @@ Picsified
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</div>
-<hr>
-<div class="container-xl p-5 mt-5">
-  <div class="row">
-    <div class="col-md-6 d-flex">
-      <img id="leftpic" src="{{url_for('static', filename='imgs/rev3.jpg')}}" style="border-radius: 10px"
-        data-aos="fade-right" data-aos-duration="2500">
-      <img class="align-self-end" id="rightpic" src="{{url_for('static', filename='imgs/main2.jpg')}}"
-        style="border-radius: 10px;margin-left: -5em;" data-aos="fade-left" data-aos-duration="2500">
-    </div>
-    <div class="col-md-6 text-center">
-      <h3 class="mt-lg-5 pt-5">"The Pics Made Out Of Pics"</h3>
-      A combination of award winning designers and advanced machine learning algorithms used to reconstruct your
-      favourite moment using hundreds of pictures.<br>
-      <i>All into one specular gift</i>
     </div>
   </div>
 </div>
