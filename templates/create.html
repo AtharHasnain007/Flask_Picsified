@@ -13,7 +13,7 @@ Create Yours Now
 
         <div class="col-xl-6 col-lg-7 xl-pt-4 ">
             <img src="imgs\create1.png"> -->
-            <img id="myImage" src="{{url_for('static', filename='imgs/create3.png')}}" alt="">
+            <img id="myImage" src="{{url_for('static', filename='imgs/create3.png')}}">
         </div>
 
         <div class="col-xxl-4 col-lg-5">
@@ -34,7 +34,8 @@ Create Yours Now
                                 </label>
                             </div>
                             <div class="form-check form-check-inline" onclick="Orientationhoriz()">
-                                <input class="form-check-input" type="radio" name="Orientation" value="Horizontal" checked>
+                                <input class="form-check-input" type="radio" name="Orientation" value="Horizontal"
+                                    checked>
                                 <label class="form-check-label" for="Orientation">
                                     <img src="https://doshopify.com/product-personalizer/images/picsifiedww.myshopify.com/POSTER-HORIZONTAL.png?v=123"
                                         height="125em">
@@ -58,14 +59,13 @@ Create Yours Now
                                 <input class="form-check-input" type="radio" name="size" value="mini">
                                 <label class="form-check-label" for="mini">
                                     <img src="https://doshopify.com/product-personalizer/images/picsifiedww.myshopify.com/Poster-MINI-3D.jpg?v=123"
-                                        style="height: 5em; width: 3em;">
+                                        style="height: 5em; width: 3em;" id="vert" onclick="sizeM(this)">
                                 </label>
                             </div>
                         </div>
                         <div class="col-4">
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="size" value="classic"
-                                    checked>
+                            <div class="form-check form-check-inline" onclick="sizeC(this)">
+                                <input class="form-check-input" type="radio" name="size" value="classic" checked>
                                 <label class="form-check-label" for="classic">
                                     <img src="https://doshopify.com/product-personalizer/images/picsifiedww.myshopify.com/Poster-classic-3D.jpg?v=123"
                                         style="height: 5em; width: 3em;">
@@ -73,9 +73,8 @@ Create Yours Now
                             </div>
                         </div>
                         <div class="col-4">
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="size" value="plus"
-                                    checked>
+                            <div class="form-check form-check-inline" onclick="sizeL(this)">
+                                <input class="form-check-input" type="radio" name="size" value="plus" checked>
                                 <label class="form-check-label" for="plus">
                                     <img src="https://doshopify.com/product-personalizer/images/picsifiedww.myshopify.com/Poster-PLUS-3D.jpg?v=123"
                                         style="height: 5em; width: 3em;">
@@ -102,10 +101,45 @@ Create Yours Now
 </div>
 <script>
     function Orientationvert() {
-        document.getElementById('myImage').src ="{{url_for('static', filename='imgs/POSTER-VERTICAL.png')}}";
+        document.getElementById('myImage').src = "{{url_for('static', filename='imgs/POSTER-VERTICAL.png')}}";
+        document.getElementById('myImage').value = "Vertical";
     }
     function Orientationhoriz() {
-        document.getElementById('myImage').src ="{{url_for('static', filename='imgs/POSTER-HORIZONTAL.png')}}";
+        document.getElementById('myImage').src = "{{url_for('static', filename='imgs/POSTER-HORIZONTAL.png')}}";
+        document.getElementById('myImage').value = "Horizontal";
+    }
+    function sizeM() {
+        img = document.getElementById('myImage');
+        if (img.value == "Vertical") {
+            img.style.height = "29em";
+            img.style.width = "24em";
+        }
+        else{
+            img.style.height = "25em";
+            img.style.width = "32em";
+        }
+    }
+    function sizeC() {
+        img = document.getElementById('myImage');
+        if (img.value == "Vertical") {
+            img.style.height = "35em";
+            img.style.width = "32em";
+        }
+        else {
+            img.style.width = "40em";
+            img.style.height = "33em";
+        }
+    }
+    function sizeL() {
+        img = document.getElementById('myImage');
+        if (img.value == "Vertical") {
+            img.style.height = "45em";
+            img.style.width = "37em";
+        }
+        else {
+            img.style.width = "54em";
+            img.style.height = "37em";
+        }
     }
 </script>
 {% endblock body %}

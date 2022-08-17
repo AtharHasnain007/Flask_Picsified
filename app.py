@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for,session
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.utils import secure_filename
+from Marble import converter
 import os
 
 UPLOAD_FOLDER = "uploads"
@@ -33,6 +34,8 @@ class Information(db.Model):
     orientation = db.Column(db.String(10), nullable=True)
     size = db.Column(db.String(10), nullable=True)
     ShippingMethod = db.Column(db.String(15), nullable=True)
+    amount = db.Column(db.Float,nullable=True)
+    taxes=db.Column(db.Float,nullable=True)
 
     def __repr__(self) -> str:
         return f"{self.orderno}"
@@ -62,6 +65,20 @@ def info():
         session['address1'] = request.form['address-1'] 
         session['address2'] = request.form['address-2']
         session['ZIP'] = request.form['zip']
+        if(session['country']=="Pakistan"):
+            if (session['size'] == "mini"):
+                session['amount'] = 2500
+            elif (session['size'] == "classic"):
+                session['amount'] = 4500
+            elif (session['size'] == "plus"):
+                session['amount'] = 7000
+        else:
+            if (session['size'] == "mini"):
+                session['amount'] = 35
+            elif (session['size'] == "classic"):
+                session['amount'] = 50
+            elif (session['size'] == "plus"):
+                session['amount'] = 65
         return redirect(url_for("shipping")) 
     return render_template("info.html",session=session)
 
@@ -69,13 +86,17 @@ def info():
 def shipping():
     if request.method=="POST":
         session['shippingmethod'] = request.form['shipping-method']
+        # else if cond will be apllied after shipping method has been decided
+        session['amount'] += 12.50
+        # then tax will be applied
+        session['amount'] += 9.50
         return redirect(url_for("payment")) 
     return render_template("shipping.html",session=session)
 
 @app.route("/payment", methods=["GET", "POST"])
 def payment():
     if request.method=="POST":
-        info = Information(firstname=session['firstname'],lastname=session['lastname'],phoneNumber=session['phoneNumber'],email=session['email'],country=session['country'],city=session['city'],address1=session['address1'],address2=session['address2'],ZIP=session['ZIP'],orientation=session['orientation'],size=session['size'],ShippingMethod=session['shippingmethod'])
+        info = Information(firstname=session['firstname'],lastname=session['lastname'],phoneNumber=session['phoneNumber'],email=session['email'],country=session['country'],city=session['city'],address1=session['address1'],address2=session['address2'],ZIP=session['ZIP'],orientation=session['orientation'],size=session['size'],ShippingMethod=session['shippingmethod'], amount = session['amount'])
         db.session.add(info)
         db.session.commit()
         session['orderno'] = info.orderno
@@ -102,13 +123,11 @@ def uploadpics():
                 filename = secure_filename(file.filename)
                 file_names.append(filename)
                 file.save(os.path.join(app.config['UPLOAD_FOLDER'], str(session['orderno']), filename))
-
-        
         for i, filename in enumerate(os.listdir(path)):
             if filename != "MAIN.jpg":
                 name = str(i) + ".jpg"
                 os.rename(os.path.join(path,filename),os.path.join(path,name)) 
-               
+        converter(path)     
         return redirect(url_for("revieworder")) 
 
     return render_template("uploadpics.html")

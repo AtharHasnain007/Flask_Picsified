@@ -124,14 +124,13 @@ Picsified
                 <h2 class="h6 mb-3 pb-1 fw-semibold fs-3">Order Summary</h2>
                 <hr>
                 <div class="row">
-                    <div class="col-9"><img src="imgs\create3.png" style="height: 10em;"></div>
-                    <div class="col-3 d-flex align-items-center">$65.00</div>
+                    <div class="col-9"><img src="{{url_for('static', filename='imgs/create3.png')}}" style="height: 10em;"></div>
+                    <div class="col-3 d-flex align-items-center">${{session.amount}}</div>
                 </div>
-                <div class="row d-flex justify-content-center">cart items will be here</div>
                 <hr>
                 <div class="row mt-4">
                     <li class="d-flex justify-content-between align-items-center"><span
-                            class="me-2">Shipping:</span><span class="text-end">$26.<small>50</small></span></li>
+                            class="me-2">Shipping:</span><span class="text-end">$12.<small>50</small></span></li>
                 </div>
                 <div class="row my-1">
                     <li class="d-flex justify-content-between align-items-center"><span class="me-2">Taxes:</span><span
