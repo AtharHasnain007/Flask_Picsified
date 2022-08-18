@@ -9,7 +9,7 @@ ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
 app = Flask(__name__)
 app.secret_key="dhsg"
-app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///orders.db"
+app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://qzinvljbhclzag:b3220163fe3d24aa547ad85d62bd811ef7758b481dd79b8e79d94416e26af691@ec2-54-85-56-210.compute-1.amazonaws.com:5432/de3p4cnrrphddf"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 db = SQLAlchemy(app)
