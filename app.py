@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for,session
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.utils import secure_filename
-from Marble import converter
+#from Marble import converter
 import os
 
 UPLOAD_FOLDER = "uploads"
@@ -127,7 +127,7 @@ def uploadpics():
             if filename != "MAIN.jpg":
                 name = str(i) + ".jpg"
                 os.rename(os.path.join(path,filename),os.path.join(path,name)) 
-        converter(path)     
+        # converter(path)     
         return redirect(url_for("revieworder")) 
 
     return render_template("uploadpics.html")
