@@ -12,11 +12,11 @@
 
 </head>
 
-<body style="background-color: #e8dada;">
+<body style="background-color: rgb(218, 234, 241);">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
     crossorigin="anonymous"></script>
-  <nav class="navbar navbar-expand-sm sticky-top" style="background-color: #d8c3c3;">
+  <nav class="navbar navbar-expand-sm sticky-top" style="background-color: #C6DCE4 ;">
     <div class="container-fluid">
       <a class="navbar-brand" href="index.html"><img src="imgs\logo.webp"></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -96,7 +96,7 @@
                                   <h1 translate="no" class="notranslate h1 product-single__title">Picsified Giftcard.</h1>
                                 </blockquote>
                             </figure>
-                            <img src="https://cdn.shopify.com/s/files/1/0521/2520/4653/products/angled-gift-card-mockup-standing-on-a-solid-color-surface-a15102_4_616x462.png?v=1639361149" class="product__thumbs--scroller" alt="Giftcard">
+                            <img src="{{url_for('static', filename='imgs/300$giftcard.jpg')}}" class="product__thumbs--scroller" alt="Giftcard">
                         </div>
                           
                         
@@ -140,7 +140,7 @@
                   </div>
                     
             
-                  <footer class="py-5 mt-5" style="background-color:#d8c3c3 ;">
+                  <footer class="py-5 mt-5" style="background-color:#C6DCE4  ;">
                     <div class="row mx-5">
                       <div class="col-6 col-md-2 mb-3">
                         <h5>Section</h5>
@@ -191,17 +191,22 @@
                       </div>
                     </div>
                 
-                    <div class="d-flex justify-content-center py-4 my-4 border-top">
+                    <div class="social-links mt-3">
+                      <a href="" class="facebook"><i class="bx bxl-facebook"></i></a>
+                      <a href="" class="instagram"><i class="bx bxl-instagram"></i></a>
+                      <a href="" class="whatsapp"><i class="bi bi-whatsapp"></i></a>
+                      </ul>
+                    </div>
+
+                    <div class="social-links mt-3">
                       <p>© 2022 Company, Inc. All rights reserved.</p>
                       <ul class="list-unstyled d-flex">
-                        <li class="ms-3"><a class="link-dark" href="#"><img class="bi" width="24" height="24" src="imgs/fb.png"></a></li>
-                        <li class="ms-3"><a class="link-dark" href="#"><img class="bi" width="24" height="24" src="imgs/insta.jfif"></a></li>
-                        <li class="ms-3"><a class="link-dark" href="#"><img class="bi" width="24" height="24" src="imgs/twit.png"></a></li>
-                      </ul>
+                  <a class="instagram" href="#"><i class="bx bxl-instagram"></i></a>
+                  <li class="ms-3"><a class="link-dark" href="#"><img class="bi" width="24" height="24" src="imgs/insta.jfif"></a></li>
+                  <li class="ms-3"><a class="link-dark" href="#"><img class="bi" width="24" height="24" src="imgs/twit.png"></a></li>
                     </div>
                   </footer>
 
- 
 
 
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
