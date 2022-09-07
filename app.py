@@ -50,6 +50,10 @@ def create():
     if request.method=="POST":
         session['orientation'] = request.form['Orientation']
         session['size'] = request.form['size']
+        file = request.files['crop_image']
+        if file and allowed_file(file.filename):
+           filename = secure_filename(file.filename)
+           file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         return redirect(url_for("info")) 
     return render_template("create.html")
 
@@ -140,14 +144,21 @@ def revieworder():
 def completeorder():
     return render_template("completeorder.html")
 
-@app.route("/test")
+@app.route("/test", methods=["GET", "POST"])
 def test():
-    os.mkdir(os.path.join(app.config['UPLOAD_FOLDER'], str(session['orderno'])))
-    return redirect("\create")
+    # os.mkdir(os.path.join(app.config['UPLOAD_FOLDER'], str(session['orderno'])))
+    if request.method=="POST":
+        session['image']=request.form['meheh']
+        file = session['image']
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], hello, filename))
+            return redirect(url_for("giftcard")) 
+    return render_template("test.html",session=session)
 
 @app.route("/giftcard")
 def giftcard():
-    return render_template("Giftcard.html")
+    pass
 
 if __name__ == "__main__":
     app.run(debug=True)

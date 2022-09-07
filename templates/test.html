@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}
+  Information
+{% endblock title %}
+{% block body %}
+<form action="{{url_for('test')}}" method="post" enctype=multipart/form-data>
+<div class="mb-3">
+    <label for="formFile" class="form-label">Default file input example</label>
+    <input class="form-control" type="file" name="meheh">
+    <button class="btn btn-dark d-block w-100" type="submit">Proceed to Shipping</button>
+  </div>
+</form>
+{% endblock body %}
