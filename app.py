@@ -152,7 +152,7 @@ def test():
         file = session['image']
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], hello, filename))
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'],  filename))
             return redirect(url_for("giftcard")) 
     return render_template("test.html",session=session)
 
